@@ -1,0 +1,80 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 01-27-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="main">
+        <c-toast-component></c-toast-component>
+        <div class="notification_titel">
+            <div class="titel">NOTIFICATION</div>
+        </div>
+        <div class="input_outerbox">
+            <div class="input_section">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_2-of-12">
+                        <!-- <div class="input_label"></div> -->
+                        <label class="input_label"><abbr>*</abbr>TO</label>
+                    </div>
+                    <div class="slds-col slds-size_10-of-12">
+                        <div class="">
+                            <!-- <input class="input_box" type="text" onfocusout={emailto}> -->
+                            <!-- <lightning-input variant="label-hidden" class="input_box" type="text"></lightning-input> -->
+                            <c-email-input onselection={handleToAddressChange} listto={to_list}></c-email-input>
+                            <div class="error_msg" if:true={required_to}>Please Enter Email</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_2-of-12">
+                        <div class="input_label">Add CC</div>
+                    </div>
+                    <div class="slds-col slds-size_10-of-12">
+                        <div class="">
+                            <c-email-input-c-c onselection={handleCcAddressChange} listto={cc_list}></c-email-input-c-c>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_2-of-12">
+                        <!-- <div class="input_label" >Subject</div> -->
+                        <label class="input_label"><abbr>*</abbr>Subject</label>
+                    </div>
+                    <div class="slds-col slds-size_10-of-12">
+                        <!-- <input class="input_box" type="text"> -->
+                        <lightning-input variant="label-hidden" class="input_box" value={Subject} placeholder="Enter Subject"  type="text" onfocusout={handleSubject}></lightning-input>
+                        <div class="error_msg" if:true={required_Subject}>Please Enter Email Subject</div>
+                    </div>
+                </div>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_2-of-12">
+                        <!-- <div class="input_label" >Message</div> -->
+                        <label class="input_label"><abbr>*</abbr>Message</label>
+                        
+                    </div>
+                    <div class="slds-col slds-size_10-of-12">
+                        <lightning-input-rich-text label="Message" value={Message} onfocusout={handlemessage}></lightning-input-rich-text>
+                        <div class="error_msg" if:true={required_Message}>Please Enter Email Message</div>
+                    </div>
+                </div>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_2-of-12">
+                        <!-- <label class="input_label">Attachment <lightning-helptext content="Attachment would be received by all the recipient in pdf formate"></lightning-helptext></label> -->
+                        <label class="input_label">Attachment <lightning-helptext content="Attachment would be received by all the recipient in pdf formate"></lightning-helptext></label>
+                    </div>
+                    <div class="slds-col slds-size_10-of-12">
+                        <lightning-input type="checkbox"  onchange={handleAttachment} checked={Attachment} value={Attachment}></lightning-input>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="bt-center">
+                <div class="bt">
+                    <input class="qf-standard-button-cancel" type="button" value="Cancel" name="Cancel" onclick={Cancel}/>
+                    <input class="qf-standard-button" type="button" value="Save" name="Save" onclick={save} />
+                </div>
+            </div>  
+    </div>
+</template>
